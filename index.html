@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MotoGP Dashboard 2026</title>
+  <meta name="description" content="Dashboard resmi MotoGP Musim 2026 — jadwal balapan, hasil, klasemen dunia, daftar pembalap, dan sirkuit Grand Prix." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#07080c">
+  <meta name="mobile-web-app-capable" content="yes">
+</head>
+<body>
+
+  <!-- Loader -->
+  <div class="loader" id="loader">
+    <div class="loader-ring"></div>
+    <div class="loader-text">MotoGP <span>2026</span></div>
+  </div>
+
+  <!-- Sidebar -->
+  <nav class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="logo-mark"></div>
+      <div class="brand-text">
+        <strong>MotoGP</strong>
+        <span>Dashboard 2026</span>
+      </div>
+    </div>
+
+    <ul class="nav-menu">
+      <li>
+        <a href="#schedule" data-tab="schedule" class="nav-link active" id="link-schedule">
+          <span class="link-number">01</span>
+          <span class="link-label">Jadwal Balap</span>
+          <span class="link-hover"></span>
+        </a>
+      </li>
+      <li>
+        <a href="#results" data-tab="results" class="nav-link" id="link-results">
+          <span class="link-number">02</span>
+          <span class="link-label">Result</span>
+          <span class="link-hover"></span>
+        </a>
+      </li>
+      <li>
+        <a href="#standings" data-tab="standings" class="nav-link" id="link-standings">
+          <span class="link-number">03</span>
+          <span class="link-label">Standing</span>
+          <span class="link-hover"></span>
+        </a>
+      </li>
+      <li>
+        <a href="#riders" data-tab="riders" class="nav-link" id="link-riders">
+          <span class="link-number">04</span>
+          <span class="link-label">Riders &amp; Team</span>
+          <span class="link-hover"></span>
+        </a>
+      </li>
+      <li>
+        <a href="#circuits" data-tab="circuits" class="nav-link" id="link-circuits">
+          <span class="link-number">05</span>
+          <span class="link-label">Sirkuit</span>
+          <span class="link-hover"></span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <div class="stat-pill">
+        <span class="pill-label">Round</span>
+        <span class="pill-value" id="pill-round">20 / 22</span>
+      </div>
+      <div class="divider"></div>
+      <div class="copyright">© 2026 MotoGP Sports Entertainment Group</div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <header class="top-header">
+      <div class="header-left">
+        <h1 class="page-title" id="page-title">Jadwal Balap 2026</h1>
+        <p class="page-sub" id="page-sub">Lengkap jadwal balapan musim MotoGP 2026</p>
+      </div>
+      <div class="header-right">
+        <div class="status-chip live" id="status-chip">
+          <span class="dot"></span>
+          LIVE: Qatar GP
+        </div>
+        <div class="api-status online" id="api-status">Menghubungkan API...</div>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Ganti tema">
+          <span class="toggle-icon">🌙</span>
+          <span class="toggle-label">Tema Gelap</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- ===== SCHEDULE ===== -->
+    <section class="tab-panel active" id="schedule">
+      <div class="panel-header">
+        <div>
+          <h2>Kalender Balapan 2026</h2>
+          <div class="chip">MotoGP World Championship</div>
+        </div>
+        <div class="toolbar">
+          <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="schedule-search" placeholder="Cari sirkuit atau negara..." />
+          </div>
+          <div class="filter-group">
+            <label class="filter-label">Filter</label>
+            <select id="schedule-filter">
+              <option value="all">Semua Ronde</option>
+              <option value="upcoming">Akan Datang</option>
+              <option value="active">Sedang Berlangsung</option>
+              <option value="completed">Selesai</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-schedule" id="grid-schedule">
+        <!-- injected by JS -->
+      </div>
+      <div id="schedule-empty" class="empty-state" style="display:none">
+        <div class="empty-icon">🏁</div>
+        <p>Tidak ada jadwal yang cocok dengan filter ini.</p>
+      </div>
+    </section>
+
+    <!-- ===== RESULTS ===== -->
+    <section class="tab-panel" id="results">
+      <div class="panel-header">
+        <div>
+          <h2>Hasil Balapan Terbaru</h2>
+          <div class="chip">Round 2026</div>
+        </div>
+        <div class="toolbar">
+          <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="results-search" placeholder="Cari pembalap atau tim..." />
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-results" id="grid-results">
+        <!-- injected by JS -->
+      </div>
+      <div id="results-empty" class="empty-state" style="display:none">
+        <div class="empty-icon">🔍</div>
+        <p>Tidak ada hasil yang cocok dengan pencarian.</p>
+      </div>
+    </section>
+
+    <!-- ===== STANDINGS ===== -->
+    <section class="tab-panel" id="standings">
+      <div class="panel-header">
+        <div>
+          <h2>Klasemen Dunia 2026</h2>
+          <div class="chip">Championship Standings</div>
+        </div>
+      </div>
+      <div class="standings-wrap" id="grid-standings">
+        <!-- injected by JS -->
+      </div>
+    </section>
+
+    <!-- ===== RIDERS ===== -->
+    <section class="tab-panel" id="riders">
+      <div class="panel-header">
+        <div>
+          <h2>Pembalap &amp; Tim</h2>
+          <div class="chip">MotoGP Grid 2026</div>
+        </div>
+        <div class="toolbar">
+          <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="riders-search" placeholder="Cari nama pembalap atau tim..." />
+          </div>
+          <div class="filter-group">
+            <label class="filter-label">Urutkan</label>
+            <select id="riders-sort">
+              <option value="number">Nomor Pembalap</option>
+              <option value="name">Nama (A-Z)</option>
+              <option value="team">Tim (A-Z)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-riders" id="grid-riders">
+        <!-- injected by JS -->
+      </div>
+      <div id="riders-empty" class="empty-state" style="display:none">
+        <div class="empty-icon">🏍️</div>
+        <p>Tidak ada pembalap yang cocok dengan pencarian.</p>
+      </div>
+    </section>
+
+    <!-- ===== CIRCUITS ===== -->
+    <section class="tab-panel" id="circuits">
+      <div class="panel-header">
+        <div>
+          <h2>Sirkuit MotoGP 2026</h2>
+          <div class="chip">22 Grand Prix</div>
+        </div>
+        <div class="toolbar">
+          <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="circuits-search" placeholder="Cari nama sirkuit atau negara..." />
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-circuits" id="grid-circuits">
+        <!-- injected by JS -->
+      </div>
+      <div id="circuits-empty" class="empty-state" style="display:none">
+        <div class="empty-icon">🏁</div>
+        <p>Tidak ada sirkuit yang cocok dengan pencarian.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/app.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/service-worker.js");
+    }
+  </script>
+  <noscript>
+    <div style="padding:2rem;text-align:center;background:#ef4444;color:#fff;">
+      <p>JavaScript diperlukan untuk menjalankan MotoGP Dashboard 2026.</p>
+      <p>Aktifkan JavaScript di browser Anda dan muat ulang halaman ini.</p>
+    </div>
+  </noscript>
+</body>
+</html>
